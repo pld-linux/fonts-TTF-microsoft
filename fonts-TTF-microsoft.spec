@@ -8,7 +8,7 @@ Name:		fonts-TTF-microsoft
 Version:	20020525
 Release:	4
 License:	Microsoft EULA (for non-commercial use)
-Group:		X11/Fonts
+Group:		Fonts
 URL:		http://www.microsoft.com/truetype/fontpack/
 Source0:	http://dl.sourceforge.net/corefonts/andale32.exe
 # Source0-md5:	cbdc2fdd7d2ed0832795e86a8b9ee19a
