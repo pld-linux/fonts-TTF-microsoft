@@ -36,20 +36,18 @@ NoSource:	10
 %endif
 BuildRequires:	cabextract
 BuildRequires:	ttmkfdir
-BuildRequires:	util-linux
-BuildRequires:	textutils
-Requires(post,postun):fileutils
-Requires(post,postun):sed
+Requires(post,postun):	fileutils
+Requires(post,postun):	textutils
 Buildarch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		ttffontsdir	%{_fontsdir}/TTF
 
-
 %description
-Microsoft free TTF fonts collection
+Microsoft free TTF fonts collection.
+
 %description -l pl
-Kolekcja darmowych czcionek TTF firmy Microsoft
+Kolekcja darmowych czcionek TTF firmy Microsoft.
 
 %prep
 %setup -q -c -T
@@ -74,6 +72,7 @@ exit 1
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{ttffontsdir}
 install *.ttf *.TTF $RPM_BUILD_ROOT%{ttffontsdir}
+
 cd $RPM_BUILD_ROOT%{ttffontsdir}
 /usr/bin/ttmkfdir |tail +2 >fonts.scale.%{name}
 cd -
@@ -86,7 +85,7 @@ cd %{ttffontsdir}
 umask 022
 rm -f fonts.scale.bak
 cat fonts.scale.* | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
+cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp fonts.dir
 ln -sf fonts.scale fonts.dir
@@ -99,7 +98,7 @@ cd %{ttffontsdir}
 umask 022
 rm -f fonts.scale.bak
 cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
+cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp fonts.dir
 ln -sf fonts.scale fonts.dir
