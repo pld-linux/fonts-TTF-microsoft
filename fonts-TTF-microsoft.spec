@@ -43,8 +43,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_mandir		%{_prefix}/man
 
 %description
+Microsoft free TTF fonts collection
 %description -l pl
-Czcionki TTF firmy Microsoft
+Kolekcja darmowych czcionek TTF firmy Microsoft
 
 %prep
 %setup -q -c -T
@@ -56,7 +57,7 @@ cat Licen.TXT |more
 
 reply=
 while [ x$reply = x ]; do
-    echo "Type a - Agree or d - Disagree and then press ENTER"
+    echo "Type (a)gree or (d)isagree and then press ENTER"
     read reply leftover
     case $reply in
 	a|A)
