@@ -6,17 +6,17 @@ Release:	2
 License:	Microsoft EULA
 Group:		X11/Fonts
 URL:		http://www.microsoft.com/truetype/fontpack/
-Source0:	http://www.eu.microsoft.com/typography/downloads/andale32.exe
-Source1:	http://www.eu.microsoft.com/typography/downloads/arial32.exe
-Source2:	http://www.eu.microsoft.com/typography/downloads/arialb32.exe
-Source3:	http://www.eu.microsoft.com/typography/downloads/comic32.exe
-Source4:	http://www.eu.microsoft.com/typography/downloads/courie32.exe
-Source5:	http://www.eu.microsoft.com/typography/downloads/georgi32.exe
-Source6:	http://www.eu.microsoft.com/typography/downloads/impact32.exe
-Source7:	http://www.eu.microsoft.com/typography/downloads/times32.exe
-Source8:	http://www.eu.microsoft.com/typography/downloads/trebuc32.exe
-Source9:	http://www.eu.microsoft.com/typography/downloads/verdan32.exe
-Source10:	http://www.eu.microsoft.com/typography/downloads/webdin32.exe
+Source0:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/andale32.exe
+Source1:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/arial32.exe
+Source2:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/arialb32.exe
+Source3:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/comic32.exe
+Source4:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/courie32.exe
+Source5:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/georgi32.exe
+Source6:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/impact32.exe
+Source7:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/times32.exe
+Source8:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/trebuc32.exe
+Source9:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/verdan32.exe
+Source10:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/webdin32.exe
 NoSource:	0
 NoSource:	1
 NoSource:	2
@@ -74,7 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{ttffontsdir}
 install *.ttf *.TTF $RPM_BUILD_ROOT%{ttffontsdir}
 cd $RPM_BUILD_ROOT%{ttffontsdir}
-/usr/bin/ttmkfdir |tail +2 >fonts.scale.fonts-TTF-microsoft
+/usr/bin/ttmkfdir |tail +2 >fonts.scale.%{name}
 cd -
 
 gzip -9nf Licen.TXT
