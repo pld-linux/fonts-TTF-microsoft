@@ -1,9 +1,13 @@
+#
+# Conditional build:
+# _with_license_agreement       - generates package
+#
 Summary:	Microsoft TTF fonts
 Summary(pl):	Czcionki TTF firmy Microsoft
 Name:		fonts-TTF-microsoft
 Version:	20020525
-Release:	2
-License:	Microsoft EULA
+Release:	3
+License:	Microsoft EULA (for non-commercial use)
 Group:		X11/Fonts
 URL:		http://www.microsoft.com/truetype/fontpack/
 Source0:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/andale32.exe
@@ -17,6 +21,7 @@ Source7:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/times32
 Source8:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/trebuc32.exe
 Source9:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/verdan32.exe
 Source10:	ftp://cvsup.pl.freebsd.org/pub/FreeBSD/ports/distfiles/webfonts/webdin32.exe
+%if %{!?_with_license_agreement:1}%{?_with_license_agreement:0}
 NoSource:	0
 NoSource:	1
 NoSource:	2
@@ -28,6 +33,7 @@ NoSource:	7
 NoSource:	8
 NoSource:	9
 NoSource:	10
+%endif
 BuildRequires:	cabextract
 BuildRequires:	ttmkfdir
 BuildRequires:	util-linux
@@ -53,21 +59,18 @@ Kolekcja darmowych czcionek TTF firmy Microsoft
 %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE8} %{SOURCE9} \
 %{SOURCE10}
 
-cat Licen.TXT |more
+%if %{!?_with_license_agreement:1}%{?_with_license_agreement:0}
+cat Licen.TXT
 
-reply=
-while [ x$reply = x ]; do
-    echo "Type (a)gree or (d)isagree and then press ENTER"
-    read reply leftover
-    case $reply in
-	a|A)
-	    reply=1
-	    ;;
-	d|D)
-	    exit 1
-	    ;;
-    esac
-done
+cat <<EOF
+
+Use:
+  rpm -ba --with license_agreement <specfile>
+to rebuild the package if you accept the above license.
+
+EOF
+exit 1
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
