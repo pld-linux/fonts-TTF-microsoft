@@ -1,6 +1,6 @@
 #
 # Conditional build:
-# _with_license_agreement       - generates package
+%bcond_with	license_agreement	# generates package
 #
 Summary:	Microsoft True Type fonts
 Summary(pl):	Fonty True Type firmy Microsoft
@@ -9,7 +9,6 @@ Version:	20020525
 Release:	4
 License:	Microsoft EULA (for non-commercial use)
 Group:		Fonts
-URL:		http://www.microsoft.com/truetype/fontpack/
 Source0:	http://dl.sourceforge.net/corefonts/andale32.exe
 # NoSource0-md5:	cbdc2fdd7d2ed0832795e86a8b9ee19a
 Source1:	http://dl.sourceforge.net/corefonts/arial32.exe
@@ -32,7 +31,7 @@ Source9:	http://dl.sourceforge.net/corefonts/verdan32.exe
 # NoSource9-md5:	12d2a75f8156e10607be1eaa8e8ef120
 Source10:	http://dl.sourceforge.net/corefonts/webdin32.exe
 # NoSource10-md5:	230a1d13a365b22815f502eb24d9149b
-%if %{!?_with_license_agreement:1}%{?_with_license_agreement:0}
+%if ! %{with license_agreement}
 NoSource:	0
 NoSource:	1
 NoSource:	2
@@ -45,6 +44,7 @@ NoSource:	8
 NoSource:	9
 NoSource:	10
 %endif
+URL:		http://www.microsoft.com/truetype/fontpack/
 BuildRequires:	cabextract
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/TTF
@@ -65,7 +65,7 @@ Kolekcja darmowych fontów True Type firmy Microsoft.
 %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE8} %{SOURCE9} \
 %{SOURCE10}
 
-%if %{!?_with_license_agreement:1}%{?_with_license_agreement:0}
+%if ! %{with license_agreement}
 cat licen.txt
 
 cat <<EOF
