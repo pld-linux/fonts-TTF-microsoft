@@ -48,7 +48,7 @@ NoSource:	10
 BuildRequires:	cabextract
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/TTF
-Buildarch:	noarch
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		ttffontsdir	%{_fontsdir}/TTF
