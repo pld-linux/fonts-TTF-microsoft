@@ -44,7 +44,7 @@ NoSource:	8
 NoSource:	9
 NoSource:	10
 %endif
-URL:		http://www.microsoft.com/truetype/fontpack/
+URL:		http://corefonts.sourceforge.net/
 BuildRequires:	cabextract
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/TTF
