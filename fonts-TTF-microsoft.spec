@@ -2,7 +2,7 @@ Summary:	Microsoft TTF fonts
 Summary(pl):	Czcionki TTF firmy Microsoft
 Name:		fonts-TTF-microsoft
 Version:	20020525
-Release:	1
+Release:	2
 License:	Microsoft EULA
 Group:		X11/Fonts
 URL:		http://www.microsoft.com/truetype/fontpack/
@@ -76,6 +76,9 @@ install *.ttf *.TTF $RPM_BUILD_ROOT%{ttffontsdir}
 cd $RPM_BUILD_ROOT%{ttffontsdir}
 /usr/bin/ttmkfdir |tail +2 >fonts.scale.fonts-TTF-microsoft
 cd -
+
+gzip -9nf Licen.TXT
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -107,4 +110,5 @@ fi
 
 %files
 %defattr(644,root,root,755)
+%doc Licen.TXT.gz
 %{ttffontsdir}/*
