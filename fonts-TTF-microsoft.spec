@@ -47,6 +47,7 @@ BuildRequires:	cabextract
 Requires:	%{_fontsdir}/TTF
 Requires(post,postun):	fontpostinst
 %else
+Requires:	cabextract
 Requires:	rpm-build-tools
 Requires:	wget
 %endif
