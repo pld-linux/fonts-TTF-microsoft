@@ -66,7 +66,7 @@ Kolekcja darmowych fontów True Type firmy Microsoft.
 %{SOURCE10}
 
 %if %{!?_with_license_agreement:1}%{?_with_license_agreement:0}
-cat Licen.TXT
+cat licen.txt
 
 cat <<EOF
 
@@ -94,5 +94,5 @@ fontpostinst TTF
 
 %files
 %defattr(644,root,root,755)
-%doc Licen.TXT
+%doc licen.txt
 %{ttffontsdir}/*
