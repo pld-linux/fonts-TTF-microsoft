@@ -71,7 +71,7 @@ cat licen.txt
 cat <<EOF
 
 Use:
-  rpm -ba --with license_agreement <specfile>
+  rpmbuild -ba --with license_agreement <specfile>
 to rebuild the package if you accept the above license.
 
 EOF
