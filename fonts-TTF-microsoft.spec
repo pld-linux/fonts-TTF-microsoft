@@ -77,8 +77,6 @@ cd $RPM_BUILD_ROOT%{ttffontsdir}
 /usr/bin/ttmkfdir |tail +2 >fonts.scale.%{name}
 cd -
 
-gzip -9nf Licen.TXT
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -110,5 +108,5 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc Licen.TXT.gz
+%doc Licen.TXT
 %{ttffontsdir}/*
