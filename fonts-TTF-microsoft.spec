@@ -140,8 +140,6 @@ else
 If you accept the above license rebuild the package using:
 
 \$0 --with license_agreement %{_datadir}/%{base_name}/%{base_name}.spec
-or
-\$0 --with license_agreement ftp://ftp.pld-linux.org/dists/ac/PLD/<your_arch>/PLD/RPMS/%{base_name}-{version}-{release}.src.rpm
 "
 fi
 EOF
@@ -173,8 +171,6 @@ and want to install real fonts, then rebuild the package with the
 following command:
 
 %{base_name}.install --with license_agreement %{_datadir}/%{base_name}/%{base_name}.spec
-or
-%{base_name}.install --with license_agreement ftp://ftp.pld-linux.org/dists/ac/PLD/<your_arch>/PLD/RPMS/%{base_name}-{version}-{release}.src.rpm
 "
 %endif
 
