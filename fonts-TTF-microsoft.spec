@@ -2,11 +2,11 @@
 # Conditional build:
 # _with_license_agreement       - generates package
 #
-Summary:	Microsoft TTF fonts
-Summary(pl):	Czcionki TTF firmy Microsoft
+Summary:	Microsoft True Type fonts
+Summary(pl):	Fonty True Type firmy Microsoft
 Name:		fonts-TTF-microsoft
 Version:	20020525
-Release:	3
+Release:	4
 License:	Microsoft EULA (for non-commercial use)
 Group:		X11/Fonts
 URL:		http://www.microsoft.com/truetype/fontpack/
@@ -46,19 +46,18 @@ NoSource:	9
 NoSource:	10
 %endif
 BuildRequires:	cabextract
-BuildRequires:	ttmkfdir
-Requires(post,postun):	fileutils
-Requires(post,postun):	textutils
+Requires(post,postun):	fontpostinst
+Requires:	%{_fontsdir}/TTF
 Buildarch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		ttffontsdir	%{_fontsdir}/TTF
 
 %description
-Microsoft free TTF fonts collection.
+Microsoft free True Type fonts collection.
 
 %description -l pl
-Kolekcja darmowych czcionek TTF firmy Microsoft.
+Kolekcja darmowych fontów True Type firmy Microsoft.
 
 %prep
 %setup -q -c -T
@@ -84,38 +83,14 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{ttffontsdir}
 install *.ttf *.TTF $RPM_BUILD_ROOT%{ttffontsdir}
 
-cd $RPM_BUILD_ROOT%{ttffontsdir}
-/usr/bin/ttmkfdir |tail +2 >fonts.scale.%{name}
-cd -
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-cd %{ttffontsdir}
-umask 022
-rm -f fonts.scale.bak
-cat fonts.scale.* | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
-cat fonts.scale.tmp >> fonts.scale
-rm -f fonts.scale.tmp fonts.dir
-ln -sf fonts.scale fonts.dir
-if [ -x /usr/X11R6/bin/xftcache ]; then
-	/usr/X11R6/bin/xftcache .
-fi
+fontpostinst TTF
 
 %postun
-cd %{ttffontsdir}
-umask 022
-rm -f fonts.scale.bak
-cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
-cat fonts.scale.tmp >> fonts.scale
-rm -f fonts.scale.tmp fonts.dir
-ln -sf fonts.scale fonts.dir
-if [ -x /usr/X11R6/bin/xftcache ]; then
-	/usr/X11R6/bin/xftcache .
-fi
+fontpostinst TTF
 
 %files
 %defattr(644,root,root,755)
