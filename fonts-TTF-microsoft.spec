@@ -11,7 +11,7 @@ Name:		%{base_name}
 Name:		%{base_name}-installer
 %endif
 Version:	20020525
-Release:	4%{?with_license_agreement:wla}
+Release:	5%{?with_license_agreement:wla}
 License:	Microsoft EULA (for non-commercial use)
 Group:		Fonts
 %if %{with license_agreement}
