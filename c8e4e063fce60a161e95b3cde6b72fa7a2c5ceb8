@@ -1,0 +1,3 @@
+- removed ftp url from %description, because
+  1) it's pointing to inexistent src.rpm in RPMS dir,
+  2) the -installer .src.rpm doesn't contain sourceX-s inside anyway
