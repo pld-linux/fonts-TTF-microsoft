@@ -1,0 +1,3 @@
+- added R: cabextract to the case of building without license
+  agreement (rationale: cabextract will be needed to get the fonts
+  anyway, which is the only possible use of the package)
