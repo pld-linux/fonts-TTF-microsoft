@@ -11,7 +11,7 @@ Name:		%{base_name}
 Name:		%{base_name}-installer
 %endif
 Version:	20020525
-Release:	5%{?with_license_agreement:wla}
+Release:	6%{?with_license_agreement:wla}
 License:	Microsoft EULA (for non-commercial use)
 Group:		Fonts
 %if %{with license_agreement}
@@ -38,6 +38,7 @@ Source9:	http://dl.sourceforge.net/corefonts/verdan32.exe
 Source10:	http://dl.sourceforge.net/corefonts/webdin32.exe
 # NoSource10-md5:	230a1d13a365b22815f502eb24d9149b
 %else
+Source0:	license-installer.sh
 # extracted from one of the above
 Source20:	Microsoft-EULA.txt
 %endif
@@ -90,58 +91,14 @@ rm -rf $RPM_BUILD_ROOT
 %if %{without license_agreement}
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/%{base_name}}
 
-cat <<EOF >$RPM_BUILD_ROOT%{_bindir}/%{base_name}.install
-#!/bin/sh
-if [ "\$1" = "--with" -a "\$2" = "license_agreement" ]
-then
-	TMPDIR=\`rpm --eval "%%{tmpdir}"\`; export TMPDIR
-	SPECDIR=\`rpm --eval "%%{_specdir}"\`; export SPECDIR
-	SRPMDIR=\`rpm --eval "%%{_srcrpmdir}"\`; export SRPMDIR
-	SOURCEDIR=\`rpm --eval "%%{_sourcedir}"\`; export SOURCEDIR
-	BUILDDIR=\`rpm --eval "%%{_builddir}"\`; export BUILDDIR
-	RPMDIR=\`rpm --eval "%%{_rpmdir}"\`; export RPMDIR
-	BACKUP_SPEC=0
-	mkdir -p \$TMPDIR \$SPECDIR \$SRPMDIR \$RPMDIR \$SRPMDIR \$SOURCEDIR \$BUILDDIR
-	if [ -f \$SPECDIR/%{base_name}.spec ]; then
-		BACKUP_SPEC=1
-		mv -f \$SPECDIR/%{base_name}.spec \$SPECDIR/%{base_name}.spec.prev
-	fi
-	if echo "\$3" | grep '\.src\.rpm$' >/dev/null; then
-		( cd \$SRPMDIR
-		if echo "\$3" | grep '://' >/dev/null; then
-			wget --passive-ftp -t0 "\$3"
-		else
-			cp -f "\$3" .
-		fi
-		rpm2cpio \`basename "\$3"\` | ( cd \$TMPDIR; cpio -i %{base_name}.spec ) )
-		if ! cp -i \$TMPDIR/%{base_name}.spec \$SPECDIR/%{base_name}.spec; then
-			exit 1
-		fi
-	else
-		if ! cp -i "\$3" \$SPECDIR; then
-			exit 1
-		fi
-	fi
-	( cd \$SPECDIR
-	%{_bindir}/builder -nc -ncs --with license_agreement --opts --target=%{_target_cpu} %{base_name}.spec
-	if [ "\$?" -ne 0 ]; then
-		exit 2
-	fi
-	RPMNAME=%{base_name}-%{version}-%{release}wla.noarch.rpm
-	rpm -U \$RPMDIR/\$RPMNAME || \
-		echo -e Install manually the file:\\\n   \$RPMDIR/\$RPMNAME )
-	if [ "\$BACKUP_SPEC" -eq 1 ]; then
-		mv -f \$SPECDIR/%{base_name}.spec.prev \$SPECDIR/%{base_name}.spec
-	fi
-else
-	cat %{_datadir}/%{base_name}/Microsot-EULA.txt
-	echo "
-If you accept the above license rebuild the package using:
-
-\$0 --with license_agreement %{_datadir}/%{base_name}/%{base_name}.spec
-"
-fi
-EOF
+sed -e '
+	s/@BASE_NAME@/%{base_name}/g
+	s/@TARGET_CPU@/%{_target_cpu}/g
+	s-@VERSION@-%{version}-g
+	s-@RELEASE@-%{release}-g
+	s,@SPECFILE@,%{_datadir}/%{base_name}/%{base_name}.spec,g
+	s,@LICENSE@,%{_datadir}/%{base_name}/Microsoft-EULA.txt,
+' %{SOURCE0} > $RPM_BUILD_ROOT%{_bindir}/%{base_name}.install
 
 install %{_specdir}/%{base_name}.spec $RPM_BUILD_ROOT%{_datadir}/%{base_name}
 install %{SOURCE20} $RPM_BUILD_ROOT%{_datadir}/%{base_name}
