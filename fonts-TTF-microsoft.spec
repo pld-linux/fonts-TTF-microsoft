@@ -64,7 +64,6 @@ by default. If you want to create full working package please build it
 with one of the following command:
 
 %{base_name}.install --with license_agreement %{_datadir}/%{base_name}/%{base_name}.spec
-%{base_name}.install --with license_agreement ftp://ftp.pld-linux.org/dists/ac/PLD/<your_arch>/PLD/RPMS/%{base_name}-{version}-{release}.src.rpm
 %endif
 
 %description -l pl
@@ -75,7 +74,6 @@ plików. Je¶li chcesz stworzyæ w pe³ni funkcjonalny pakiet, zbuduj go za
 pomoc± polecenia:
 
 %{base_name}.install --with license_agreement %{_datadir}/%{base_name}/%{base_name}.spec
-%{base_name}.install --with license_agreement ftp://ftp.pld-linux.org/dists/ac/PLD/<your_arch>/PLD/RPMS/%{base_name}-{version}-{release}.src.rpm
 %endif
 
 %prep
