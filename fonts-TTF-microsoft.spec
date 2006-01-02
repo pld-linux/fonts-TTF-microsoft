@@ -119,7 +119,7 @@ fontpostinst TTF
 fontpostinst TTF
 
 %else
-%pre
+%post
 echo "
 If you accept the license enclosed in the file
 %{_datadir}/%{base_name}/Microsoft-EULA.txt
