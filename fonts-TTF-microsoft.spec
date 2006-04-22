@@ -43,7 +43,7 @@ Source9:	http://dl.sourceforge.net/corefonts/verdan32.exe
 Source10:	http://dl.sourceforge.net/corefonts/webdin32.exe
 # Source10-md5:	230a1d13a365b22815f502eb24d9149b
 %else
-Source0:	license-installer.sh
+Source21:	license-installer.sh
 # extracted from one of the above
 Source20:	Microsoft-EULA.txt
 %endif
@@ -88,7 +88,7 @@ sed -e '
 	s-@RELEASE@-%{release}-g
 	s,@SPECFILE@,%{_datadir}/%{base_name}/%{base_name}.spec,g
 	s,@LICENSE@,%{_datadir}/%{base_name}/Microsoft-EULA.txt,
-' %{SOURCE0} > $RPM_BUILD_ROOT%{_bindir}/%{base_name}.install
+' %{SOURCE21} > $RPM_BUILD_ROOT%{_bindir}/%{base_name}.install
 
 install %{_specdir}/%{base_name}.spec $RPM_BUILD_ROOT%{_datadir}/%{base_name}
 install %{SOURCE20} $RPM_BUILD_ROOT%{_datadir}/%{base_name}
