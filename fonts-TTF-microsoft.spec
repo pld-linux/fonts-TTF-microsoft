@@ -14,7 +14,7 @@ Name:		%{base_name}
 %else
 Name:		%{base_name}-installer
 %endif
-%define		_rel	7
+%define		_rel	8
 Version:	20020525
 Release:	%{_rel}%{?with_license_agreement:wla}
 License:	Microsoft EULA (for non-commercial use)
@@ -52,6 +52,7 @@ URL:		http://corefonts.sourceforge.net/
 BuildRequires:	cabextract
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/TTF
+Requires:	fontpostinst
 %else
 Requires:	cabextract
 Requires:	mktemp > 1.5-18
