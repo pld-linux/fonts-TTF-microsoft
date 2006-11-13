@@ -80,7 +80,7 @@ Kolekcja darmowych fontów True Type firmy Microsoft.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%if %{without license_agreement}
+%if !%{with license_agreement}
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/%{base_name}}
 
 sed -e '
