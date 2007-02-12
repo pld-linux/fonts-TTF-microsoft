@@ -8,7 +8,7 @@
 #
 %define		base_name	fonts-TTF-microsoft
 Summary:	Microsoft True Type fonts
-Summary(pl):	Fonty True Type firmy Microsoft
+Summary(pl.UTF-8):   Fonty True Type firmy Microsoft
 %if %{with license_agreement}
 Name:		%{base_name}
 %else
@@ -66,8 +66,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Microsoft free True Type fonts collection.
 
-%description -l pl
-Kolekcja darmowych fontów True Type firmy Microsoft.
+%description -l pl.UTF-8
+Kolekcja darmowych fontÃ³w True Type firmy Microsoft.
 
 %prep
 %if %{with license_agreement}
