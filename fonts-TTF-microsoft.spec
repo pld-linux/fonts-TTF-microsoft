@@ -8,7 +8,7 @@
 #
 %define		base_name	fonts-TTF-microsoft
 Summary:	Microsoft True Type fonts
-Summary(pl.UTF-8):   Fonty True Type firmy Microsoft
+Summary(pl.UTF-8):	Fonty True Type firmy Microsoft
 %if %{with license_agreement}
 Name:		%{base_name}
 %else
