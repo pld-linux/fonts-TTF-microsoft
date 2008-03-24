@@ -7,8 +7,8 @@
 %bcond_with	license_agreement	# generates package
 #
 %define		base_name	fonts-TTF-microsoft
-Summary:	Microsoft True Type fonts
-Summary(pl.UTF-8):	Fonty True Type firmy Microsoft
+Summary:	Microsoft TrueType fonts
+Summary(pl.UTF-8):	Fonty TrueType firmy Microsoft
 %if %{with license_agreement}
 Name:		%{base_name}
 %else
@@ -64,10 +64,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		ttffontsdir	%{_fontsdir}/TTF
 
 %description
-Microsoft free True Type fonts collection.
+Microsoft free TrueType fonts collection.
 
 %description -l pl.UTF-8
-Kolekcja darmowych fontów True Type firmy Microsoft.
+Kolekcja darmowych fontów TrueType firmy Microsoft.
 
 %prep
 %if %{with license_agreement}
