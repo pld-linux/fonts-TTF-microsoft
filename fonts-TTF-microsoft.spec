@@ -5,8 +5,9 @@
 #
 # Conditional build:
 %bcond_with	license_agreement	# generates package
-#
+
 %define		base_name	fonts-TTF-microsoft
+%define		rel	8
 Summary:	Microsoft TrueType fonts
 Summary(pl.UTF-8):	Fonty TrueType firmy Microsoft
 %if %{with license_agreement}
@@ -14,9 +15,8 @@ Name:		%{base_name}
 %else
 Name:		%{base_name}-installer
 %endif
-%define		_rel	8
 Version:	20020525
-Release:	%{_rel}%{?with_license_agreement:wla}
+Release:	%{rel}%{?with_license_agreement:wla}
 License:	Microsoft EULA (for non-commercial use)
 Group:		Fonts
 %if %{with license_agreement}
@@ -56,7 +56,7 @@ Requires:	fontpostinst
 %else
 Requires:	cabextract
 Requires:	mktemp > 1.5-18
-Requires:	rpm-build-tools > 0:4.4.35
+Requires:	rpm-build-tools > 4.4.35
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
