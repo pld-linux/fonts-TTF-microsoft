@@ -56,7 +56,7 @@ Requires:	fontpostinst
 %else
 Requires:	cabextract
 Requires:	mktemp > 1.5-18
-Requires:	rpm-build-tools > 4.4.35
+Requires:	rpm-build-tools >= 4.4.35
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
