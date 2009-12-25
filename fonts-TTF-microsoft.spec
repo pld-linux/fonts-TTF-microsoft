@@ -7,7 +7,7 @@
 %bcond_with	license_agreement	# generates package
 
 %define		base_name	fonts-TTF-microsoft
-%define		rel	8
+%define		rel	9
 Summary:	Microsoft TrueType fonts
 Summary(pl.UTF-8):	Fonty TrueType firmy Microsoft
 %if %{with license_agreement}
@@ -89,6 +89,7 @@ sed -e '
 	s-@VERSION@-%{version}-g
 	s-@RELEASE@-%{release}-g
 	s,@SPECFILE@,%{_datadir}/%{base_name}/%{base_name}.spec,g
+	s,@DATADIR@,%{_datadir}/%{base_name},g
 	s,@LICENSE@,%{_datadir}/%{base_name}/Microsoft-EULA.txt,
 ' %{SOURCE21} > $RPM_BUILD_ROOT%{_bindir}/%{base_name}.install
 
