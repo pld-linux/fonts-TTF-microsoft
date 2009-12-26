@@ -43,7 +43,8 @@ Source9:	http://dl.sourceforge.net/corefonts/verdan32.exe
 Source10:	http://dl.sourceforge.net/corefonts/webdin32.exe
 # Source10-md5:	230a1d13a365b22815f502eb24d9149b
 %else
-Source21:	license-installer.sh
+Source21:	http://svn.pld-linux.org/svn/license-installer/license-installer.sh
+# Source21-md5:	4fb1600353dd57fe088e0b12fb0ecac2
 # extracted from one of the above
 Source20:	Microsoft-EULA.txt
 %endif
