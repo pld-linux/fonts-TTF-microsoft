@@ -7,7 +7,7 @@
 %bcond_with	license_agreement	# generates package
 
 %define		base_name	fonts-TTF-microsoft
-%define		rel	10
+%define		rel	11
 Summary:	Microsoft TrueType fonts
 Summary(pl.UTF-8):	Fonty TrueType firmy Microsoft
 %if %{with license_agreement}
@@ -44,7 +44,7 @@ Source10:	http://downloads.sourceforge.net/corefonts/webdin32.exe
 # Source10-md5:	230a1d13a365b22815f502eb24d9149b
 %else
 Source21:	http://svn.pld-linux.org/svn/license-installer/license-installer.sh
-# Source21-md5:	4fb1600353dd57fe088e0b12fb0ecac2
+# Source21-md5:	329c25f457fea66ec502b7ef70cb9ede
 # extracted from one of the above
 Source20:	Microsoft-EULA.txt
 %endif
@@ -58,7 +58,8 @@ Requires:	fontpostinst
 %else
 Requires:	cabextract
 Requires:	mktemp > 1.5-18
-Requires:	rpm-build-tools >= 4.4.35
+Requires:	rpm-build-macros >= 1.544
+Requires:	rpm-build-tools >= 4.4.37
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
