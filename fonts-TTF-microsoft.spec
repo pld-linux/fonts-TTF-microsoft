@@ -7,7 +7,7 @@
 %bcond_with	license_agreement	# generates package
 
 %define		base_name	fonts-TTF-microsoft
-%define		rel	11
+%define		rel	12
 Summary:	Microsoft TrueType fonts
 Summary(pl.UTF-8):	Fonty TrueType firmy Microsoft
 %if %{with license_agreement}
